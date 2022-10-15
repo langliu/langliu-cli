@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "",
   "main": "src/index.mjs",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/langliu/langliu-cli.git"
@@ -11,6 +10,7 @@
   "keywords": [
     "cli"
   ],
+  "type": "module",
   "author": {
     "name": "langliu",
     "email": "809721414@qq.com",
@@ -28,7 +28,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.mjs",
     "lint": "eslint src/** --fix",
-    "commit": "git cz"
+    "commit": "cz",
+    "prepare": "husky install"
   },
   "config": {
     "commitizen": {
@@ -36,6 +37,7 @@
     }
   },
   "dependencies": {
+    "@commitlint/cli": "^17.1.2",
     "zx": "^7.1.1"
   },
   "devDependencies": {
@@ -47,6 +49,7 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.1.0"
+    "eslint-plugin-promise": "^6.1.0",
+    "husky": "^7.0.0"
   }
 }

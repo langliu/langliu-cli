@@ -4,6 +4,7 @@ import { $ } from 'zx'
 import { actions } from './utils/constants.mjs'
 import { now } from './bin/now.mjs'
 import { pwd } from './bin/pwd.mjs'
+import { squoosh } from './bin/squoosh.mjs'
 
 $.verbose = false
 const argument = process.argv.slice(2)
@@ -20,6 +21,9 @@ if (argument.length === 0) {
       break
     case 'pwd':
       pwd()
+      break
+    case 'squoosh':
+      squoosh()
       break
   }
 }

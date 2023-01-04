@@ -11,7 +11,8 @@ export async function squoosh (path) {
     const location = join(currentPath, item)
     const info = fs.statSync(location)
     if (info.isFile() && ['jpg', 'jpeg', 'png', 'webp'].includes(getExtension(item))) {
-      await $`squoosh-cli --avif '{"cqLevel":33,"cqAlphaLevel":-1,"denoiseLevel":0,"tileColsLog2":0,"tileRowsLog2":0,"speed":6,"subsample":1,"chromaDeltaQ":false,"sharpness":0,"tune":0}' -d squoosh ${item}`
+      // await $`squoosh-cli --avif '{"cqLevel":33,"cqAlphaLevel":-1,"denoiseLevel":0,"tileColsLog2":0,"tileRowsLog2":0,"speed":6,"subsample":1,"chromaDeltaQ":false,"sharpness":0,"tune":0}' -d squoosh ${item}`
+      await $`cavif --quality 33 --speed 7 --overwrite ${item}`
     } else if (info.isDirectory() && item !== 'squoosh') {
       await squoosh(join(currentPath, item))
     }

@@ -29,7 +29,7 @@
     "start": "node src/index.mjs",
     "lint": "eslint src/** --fix",
     "commit": "cz",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "config": {
     "commitizen": {
@@ -37,19 +37,19 @@
     }
   },
   "dependencies": {
-    "@commitlint/cli": "^17.4.0",
-    "zx": "^7.1.1"
+    "zx": "^8.0.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "commitizen": "^4.2.6",
-    "cz-git": "^1.4.1",
-    "eslint": "^8.31.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.6.0",
+    "@commitlint/cli": "^19.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.1",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
-    "husky": "^8.0.3"
+    "husky": "^9.0.11"
   }
 }

@@ -37,6 +37,10 @@
     }
   },
   "dependencies": {
+    "commander": "^12.0.0",
+    "csv": "^6.3.8",
+    "figlet": "^1.7.0",
+    "nzh": "^1.0.12",
     "zx": "^8.0.2"
   },
   "devDependencies": {

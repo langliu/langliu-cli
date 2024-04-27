@@ -15,18 +15,19 @@ export async function split (filePath, titleRegex) {
       const fileContent = value.toString()
       const list = []
       const arr = fileContent.split(/\n/).filter(item => item !== '')
-      const regex = titleRegex ? new RegExp(titleRegex) : /^\s*第(.*)章\s*(.*)/
+      const regex = titleRegex ? new RegExp(titleRegex) : /^\s*第(\S{1,10})章\s*(.*)/
       for (const item of arr) {
         if (regex.test(item)) {
           let serial = 0
           try {
             serial = item.replace(regex, '$1')
-            if (/^\d*$/.test(serial)) {
+            if (/^\d*/.test(serial)) {
               serial = Number(serial)
             } else {
               serial = nzh.default.decodeS(serial)
             }
           } catch (error) {
+            console.warn(error)
             serial = 0
           }
           list.push({

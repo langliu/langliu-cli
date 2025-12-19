@@ -1,20 +1,20 @@
-import { chalk, fs, path } from 'zx'
 import { stringify } from 'csv'
 import * as nzh from 'nzh/cn'
+import { chalk, fs, path } from 'zx'
 
 /**
  * 小说拆分
  * @param {string} filePath 文件地址
  * @param {string} titleRegex 匹配标题的正则表达式
  */
-export async function split (filePath, titleRegex) {
+export async function split(filePath, titleRegex) {
   /** 判断文件是否存在 */
   const fileExist = await fs.exists(filePath)
   if (fileExist) {
     fs.readFile(filePath).then((value) => {
       const fileContent = value.toString()
       const list = []
-      const arr = fileContent.split(/\n/).filter(item => item !== '')
+      const arr = fileContent.split(/\n/).filter((item) => item !== '')
       const regex = titleRegex ? new RegExp(titleRegex) : /^\s*第(\S{1,10})章\s*(.*)/
       for (const item of arr) {
         if (regex.test(item)) {
@@ -31,17 +31,20 @@ export async function split (filePath, titleRegex) {
             serial = 0
           }
           list.push({
+            serial,
             title: item.replace(regex, '$2').trim(),
-            serial
           })
         } else {
           const current = list[list.length - 1]
           if (current && item && item !== '\r') {
-            current.content = (current?.content ?? '') + `${item}\n`
+            current.content = `${current?.content ?? ''}${item}\n`
           }
         }
       }
-      const stringifier = stringify({ header: true, columns: Object.keys(list[0]) })
+      const stringifier = stringify({
+        columns: Object.keys(list[0]),
+        header: true,
+      })
       for (const item of list) {
         stringifier.write(Object.values(item))
       }

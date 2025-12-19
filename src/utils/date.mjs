@@ -1,8 +1,12 @@
-export function getCurrentDate () {
+/**
+ * 获取当前日期时间的格式化字符串
+ * @returns {string} 格式为 "YYYY年MM月DD日 星期X HH时mm分ss秒" 的字符串
+ */
+export function getCurrentDate() {
   const date = new Date()
   const fullYear = date.getFullYear()
   const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const day = (date.getDate()).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
 
   const weekDay = weekDayText(date.getDay())
   const hour = date.getHours().toString().padStart(2, '0')
@@ -13,12 +17,15 @@ export function getCurrentDate () {
 }
 
 /**
- * 星期几中文
- * @param {number} weekDay 星期几
+ * 将星期数字转换为中文文本
+ * @param {number} weekDay 星期几的数字（0-6，0代表星期天）
+ * @returns {string} 中文星期文本
  */
-function weekDayText (weekDay) {
+function weekDayText(weekDay) {
   const num = weekDay % 7
   switch (num) {
+    case 0:
+      return '星期天'
     case 1:
       return '星期一'
     case 2:
@@ -31,8 +38,6 @@ function weekDayText (weekDay) {
       return '星期五'
     case 6:
       return '星期六'
-    case 7:
-      return '星期天'
     default:
       return '未知'
   }

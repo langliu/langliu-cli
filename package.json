@@ -46,7 +46,7 @@
     "commit": "cz",
     "lint": "biome check src/ --write",
     "prepare": "husky",
-    "start": "node src/index.mjs"
+    "test:magick": "node src/index.mjs magick test_images"
   },
   "type": "module",
   "version": "0.0.3"

@@ -30,8 +30,9 @@ program
   .command('magick')
   .description('使用 ImageMagick 递归压缩当前目录或指定目录下的图片')
   .argument('[path]', '目标目录路径，默认为当前目录')
-  .action((path) => {
-    imageCompression(path)
+  .option('-q, --quality <number>', '压缩质量 (1-100)', 75)
+  .action((path, options) => {
+    imageCompression(path, false, null, options.quality)
   })
 
 program

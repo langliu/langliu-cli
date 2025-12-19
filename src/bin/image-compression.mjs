@@ -130,7 +130,14 @@ export async function imageCompression(
       const totalSavings = stats.totalOriginalSize - stats.totalCompressedSize
       const totalSavingsPercent = ((totalSavings / (stats.totalOriginalSize || 1)) * 100).toFixed(1)
       console.log(
-        chalk.cyan(`  📦 总计节省空间: ${formatBytes(totalSavings)} (-${totalSavingsPercent}%)`),
+        chalk.cyan(
+          `  📦 总大小: ${formatBytes(stats.totalOriginalSize)} -> ${formatBytes(
+            stats.totalCompressedSize,
+          )}`,
+        ),
+      )
+      console.log(
+        chalk.cyan(`  🚀 总计节省空间: ${formatBytes(totalSavings)} (-${totalSavingsPercent}%)`),
       )
     }
     console.log('')
